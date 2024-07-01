@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Post = require("../models/Post");
 const { create } = require("connect-mongo");
-
+const upload = require("../models/upload");
 // ROutes
 
 /**
@@ -104,7 +104,7 @@ function insertPostData () {
 
 insertPostData();
 
-
+router.post("/", upload.single("image"), postImage);
 
 
 router.get("/about", (req, res) => {

@@ -17,7 +17,15 @@ const PostSchema = new Schema({
     updatedAt: {
         type: Date,
         default: Date.now
-    }
+    },
+    filename: {
+        type: String,
+        required: true,
+    },
+    filepath: {
+        type: String,
+        required: true,
+    },
 });
 
 module.exports = mongoose.model('Post', PostSchema);
