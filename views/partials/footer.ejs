@@ -1,3 +1,39 @@
-<footer class="footer">
-    &copy <%= new Date().getFullYear(); %> • Made by Kanishk using NodeJs and MongoDb
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-left">
+            <a href="/" class="footer_logo">Blog Page</a>
+            <div class="social-logos">
+                <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+            <p>&copy; 2024 Your Website Name. All rights reserved.</p>
+        </div>
+        <div class="footer-right">
+            <h3>Contact Us</h3>
+            <form>
+                <div class="form-group">
+                    <input type="text" placeholder="Name" required>
+                    <input type="email" placeholder="Email" required>
+                </div>
+                <textarea placeholder="Review or a Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
 </footer>
+
+</body>
+</html>

@@ -1,27 +1,60 @@
 <section id="HomePage">
-    <div class="author">
-        <h1 class="Home_heading">Heading</h1>
-        <p class="Home_body">
-            Full Stack Web Developer in Web Development (Bakwass) Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam alias excepturi beatae, magnam non illum quis. Mollitia sit, vero accusantium esse recusandae aliquid? Nostrum error ipsum ex saepe, rem facere.
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae enim eos provident aliquid, architecto beatae non ratione unde nihil cupiditate? Suscipit repudiandae voluptas, dolorum voluptatem fugiat ex veritatis magnam aspernatur!
-        </p>
+       <div class="author">
+        <div class="author-content">
+            <div class="author-image">
+                <img src="/img/My-Image.png" alt="My Image" class="hero-image" width="681" height="428">
+            </div>
+            <div class="author-text">
+                <h2 class="Home_heading">Latest Posts</h2>
+                <p class="Home_body">
+                    Full Stack Web Developer in Web Development (Bakwass) Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam alias excepturi beatae, magnam non illum quis. Mollitia sit, vero accusantium esse recusandae aliquid? Nostrum error ipsum ex saepe, rem facere.
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae enim eos provident aliquid, architecto beatae non ratione unde nihil cupiditate? Suscipit repudiandae voluptas, dolorum voluptatem fugiat ex veritatis magnam aspernatur!
+                </p>
+                <button class="add-post">Add Blog</button>
+            </div>
+        </div>
     </div>
-    <button class="add-post">Add Blog</button><br>
-    <img src="/img/My-Image.png" alt="My Image" class="hero-image" width="681" height="428">
     
     <section class="articles">
         <h2 class="articles__heading">Latest Posts</h2>
         <ul class="article-ul">
-            <li>
+            <li class="article-preview">
                 <a href="#">
-                    <span>Post Title</span>
-                    <span class="article-list__date">Date</span>
+                    <img src="/img/My-Image.png" alt="Thumbnail 1">
+                    <div class="article-preview__content">
+                        <h3>Post Title 1</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam alias excepturi beatae, magnam non illum quis. Mollitia sit, vero accusantium esse recusandae aliquid? Nostrum error ipsum ex saepe, rem facere. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae enim eos provident aliquid, architecto beatae non ratione unde nihil cupiditate? Suscipit repudiandae voluptas, dolorum voluptatem fugiat ex veritatis magnam aspernatur!
+                        </p>
+                    </div>
+                </a>
+            </li>
+            <li class="article-preview">
+                <a href="#">
+                    <img src="/img/My-Image.png" alt="Thumbnail 2">
+                    <div class="article-preview__content">
+                        <h3>Post Title 2</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam alias excepturi beatae, magnam non illum quis. Mollitia sit, vero accusantium esse recusandae aliquid? Nostrum error ipsum ex saepe, rem facere. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae enim eos provident aliquid, architecto beatae non ratione unde nihil cupiditate? Suscipit repudiandae voluptas, dolorum voluptatem fugiat ex veritatis magnam aspernatur!
+                        </p>
+                    </div>
+                </a>
+            </li>
+            <li class="article-preview">
+                <a href="#">
+                    <img src="/img/My-Image.png" alt="Thumbnail 3">
+                    <div class="article-preview__content">
+                        <h3>Post Title 3</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam alias excepturi beatae, magnam non illum quis. Mollitia sit, vero accusantium esse recusandae aliquid? Nostrum error ipsum ex saepe, rem facere. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae enim eos provident aliquid, architecto beatae non ratione unde nihil cupiditate? Suscipit repudiandae voluptas, dolorum voluptatem fugiat ex veritatis magnam aspernatur!
+                        </p>
+                    </div>
                 </a>
             </li>
         </ul>
     
+    
         <a href="#" class="pagination">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="height: 15px;"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="height: 15px;">
+                <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/>
+            </svg>
             View Older Posts
         </a>
     </section>
