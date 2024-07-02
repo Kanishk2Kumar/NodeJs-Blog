@@ -421,3 +421,48 @@ textarea {
   align-items: center;
   padding: 20px;
 }
+
+/* Sign In */
+.form-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+
+.form-group input {
+  width: 48%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+textarea {
+  width: 100%;
+  max-width: 510px;
+  min-width: 500px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #5e3023;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #895737;
+}
+
+.footer-bottom {
+  background-color: #dab49d;
+  text-align: center;
+  padding: 10px 0;
+  color: #5e2023;
+}

@@ -10,7 +10,9 @@
                  Full Stack Web Developer in Web Development (Bakwass) Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam alias excepturi beatae, magnam non illum quis. Mollitia sit, vero accusantium esse recusandae aliquid? Nostrum error ipsum ex saepe, rem facere.
                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae enim eos provident aliquid, architecto beatae non ratione unde nihil cupiditate? Suscipit repudiandae voluptas, dolorum voluptatem fugiat ex veritatis magnam aspernatur!
              </p>
-             <button class="add-post">Add Blog</button>
+            <button class="add-post">
+                <a href="/AddBlog">Add Blog</a>
+            </button>
          </div>
      </div>
  </div>
@@ -18,36 +20,17 @@
  <section class="articles">
      <h2 class="articles__heading">Latest Posts</h2>
      <ul class="article-ul">
-         <li class="article-preview">
-             <a href="#">
-                 <img src="/img/My-Image.png" alt="Thumbnail 1">
-                 <div class="article-preview__content">
-                     <h3>Post Title 1</h3>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam alias excepturi beatae, magnam non illum quis. Mollitia sit, vero accusantium esse recusandae aliquid? Nostrum error ipsum ex saepe, rem facere. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae enim eos provident aliquid, architecto beatae non ratione unde nihil cupiditate? Suscipit repudiandae voluptas, dolorum voluptatem fugiat ex veritatis magnam aspernatur!
-                     </p>
-                 </div>
-             </a>
-         </li>
-         <li class="article-preview">
-             <a href="#">
-                 <img src="/img/My-Image.png" alt="Thumbnail 2">
-                 <div class="article-preview__content">
-                     <h3>Post Title 2</h3>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam alias excepturi beatae, magnam non illum quis. Mollitia sit, vero accusantium esse recusandae aliquid? Nostrum error ipsum ex saepe, rem facere. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae enim eos provident aliquid, architecto beatae non ratione unde nihil cupiditate? Suscipit repudiandae voluptas, dolorum voluptatem fugiat ex veritatis magnam aspernatur!
-                     </p>
-                 </div>
-             </a>
-         </li>
-         <li class="article-preview">
-             <a href="#">
-                 <img src="/img/My-Image.png" alt="Thumbnail 3">
-                 <div class="article-preview__content">
-                     <h3>Post Title 3</h3>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam alias excepturi beatae, magnam non illum quis. Mollitia sit, vero accusantium esse recusandae aliquid? Nostrum error ipsum ex saepe, rem facere. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae enim eos provident aliquid, architecto beatae non ratione unde nihil cupiditate? Suscipit repudiandae voluptas, dolorum voluptatem fugiat ex veritatis magnam aspernatur!
-                     </p>
-                 </div>
-             </a>
-         </li>
+        <% data.forEach(post => { %>
+            <li class="article-preview">
+                <a href="/post/<%= post._id %>">
+                    <img src="uploads/<%= post.filename %>.jpg" alt="Thumbnail 1">
+                    <div class="article-preview__content">
+                        <h3><%= post.title %></h3>
+                        <p><%= post.body %></p>
+                    </div>
+                </a>
+            </li>
+        <% }); %>
      </ul>
  
  
