@@ -121,6 +121,15 @@ router.get("/about", (req, res) => {
 router.get("/signIn", (req, res) => {
   res.render("signIn")
 })
+router.get("/blogs", async (req, res) => {
+  try {
+      const data = await Post.find();
+      res.render('blogs', { data });
+  } catch (error) {
+      console.log(error);
+      res.status(500).send("An error occurred while fetching the data.");
+  }
+});
 router.get("/individualBlog", (req, res) => {
     res.render("individualBlog")
 })
