@@ -1,1 +1,37 @@
-<h1>This is the ABout Me Page</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link rel="stylesheet" href="public/css/about.css">
+</head>
+<body>
+    <div class="about_container">
+        <header class="About_header">
+            <h1>About Me</h1>
+        </header>
+        <section class="about_bio">
+            <img src="/img/Kanishk.jpg" alt="Author's photo" class="about_author-photo">
+            <h2>SATYAJIT BORADE</h2>
+            <p>Hello! I'm Satyajit, a dedicated student at Pune University with a passion for computer science and emerging technologies. My curiosity and enthusiasm drive me to explore the latest advancements in the tech world and share my insights with others. Through this blog, I aim to provide valuable content across various categories, from deep dives into new tech trends to practical tutorials and personal reflections. Join me on this journey as we uncover the fascinating world of technology together!</p>
+        </section>
+        <section class="about_suggestions">
+            <h2>Suggestions</h2>
+            <form action="/submit-suggestion" method="POST">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+
+                <label for="suggestion">Your Suggestion:</label>
+                <textarea id="suggestion" name="suggestion" rows="4" required></textarea>
+                
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </div>
+</body>
+</html>
