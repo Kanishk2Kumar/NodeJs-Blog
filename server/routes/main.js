@@ -68,6 +68,32 @@ router.get("/AddBlog", (req, res) => {
     res.render("AddBlog");
 });
 
+router.post('/AddBlog', upload.single('image'), (req, res) => {
+    // Handle form submission logic here
+    const title = req.body.title;
+    const content = req.body.content;
+    const image = req.file; // This will contain details about the uploaded image
+
+    const BlogPost = require('../models/Post'); // Adjust path as per your project structure
+
+    const newPost = new Post({
+        title: title,
+        body: body,
+        filename: "file1",
+        filepath: image.path // Assuming 'path' contains the path to the uploaded file
+    });
+
+    newPost.save()
+        .then(savedPost => {
+            console.log('New blog post saved:', savedPost);
+            res.status(201).send('Blog post created successfully');
+        })
+        .catch(err => {
+            console.error('Error saving blog post:', err);
+            res.status(500).send('Error saving blog post');
+        });
+});
+
 router.get("/about", (req, res) => {
     res.render("about");
 });
