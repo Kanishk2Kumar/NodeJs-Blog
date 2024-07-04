@@ -1,0 +1,20 @@
+<body class="AddBlog">
+    <h1>Create New Blog Post</h1>
+    <form action="/AddBlog" method="post" enctype="multipart/form-data" class="AddBlog_form">
+        <label for="title" class="AddBlog_label">Title:</label>
+        <input type="text" id="title" name="title" required>
+        <section class="Imagetaker">
+            <label for="image">Featured Image:</label>
+            <input type="file" id="image" name="image" accept="image/*" required class="AddBlog_input">
+        </section>
+        <label for="content">Content:</label>
+        <textarea id="content" name="content" rows="10" required class="AddBlog_textarea"></textarea>
+        <section class="AddBlog_createbutton">
+            <button type="submit">Create Post</button>
+        </section>
+
+    </form>
+
+</body>
+
+</html>
