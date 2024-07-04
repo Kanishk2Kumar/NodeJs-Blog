@@ -18,7 +18,7 @@
         </section>
         <section class="about_suggestions">
             <h2>Suggestions</h2>
-            <form action="/submit-suggestion" method="POST">
+            <form id="contact-form" >
                 <label for="name">Your Name:</label>
                 <input type="text" id="name" name="name" required>
                 
@@ -33,5 +33,24 @@
             </form>
         </section>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("THkCmNTXu2RIVAw2i");
+        })();
+
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // These IDs from the previous steps
+            emailjs.sendForm('service_3izqhsq', 'template_6ijzxuo', this)
+                .then(function() {
+                    alert('SUCCESS!');
+                }, function(error) {
+                    alert('FAILED...', error);
+                });
+        });
+    </script>
+
 </body>
 </html>
