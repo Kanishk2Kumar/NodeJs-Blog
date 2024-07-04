@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign/Register Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section id="Sign-in">
+        <div class="wrapper">
+            <div class="form-wrapper sign-in">
+                <form action="/login" method="POST" id="login-form">
+                    <h2>Login</h2>
+                    <div class="input-group">
+                        <input type="text" required name="username" id="username" placeholder="Username">
+                        <label for="username">Username</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" required name="email" placeholder="Email">
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" required name="password" placeholder="Password">
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="forgot-pass">
+                        <a href="#">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                    <div class="sign-link">
+                        <p>Don't have an account? <a href="/register" class="signUp-link">Sign Up</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
