@@ -14,16 +14,13 @@
             </li>
             <li>
                 <% if(IsSignedIn){ %>
-                    <% console.log("User signed in succesful") %>
                     <button class="register" aria-expanded="false">
-                        <a href="/register">
-                            <%= currentUser %>
-                        </a>
+                        <%= currentUser %>
                     </button>
+
                 <% } else { %>
                     <button class="register" aria-expanded="false">
-                        <% console.log("User sign in NOT succesful") %>
-                        <a href="/register">
+                        <a href="/login">
                             Sign In
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
                                 style="height: 20px; padding-left:3px">

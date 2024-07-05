@@ -1,9 +1,22 @@
 const express = require("express");
 const router = express.Router();
+const multer = require('multer');
 const Post = require("../models/Post");
-const upload = require("../models/upload");
+const BlogPost = require("../models/Post"); // Ensure you have imported the correct model
 const { postImage } = require("../models/controller");
 const Register = require("../models/register");
+
+// Configure multer for file uploads
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads/'); // Ensure this directory exists
+    },
+    filename: (req, file, cb) => {
+         return cb(null, `${Date.now()}-${file.filename}`);
+    }
+});
+
+const upload = multer({ storage: storage });
 
 // Middleware to set default values for logged-in state and username
 router.use((req, res, next) => {
@@ -85,7 +98,7 @@ router.get("/register", (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-  res.render("login");
+    res.render("login");
 });
 
 router.get("/blogs", async (req, res) => {
@@ -109,7 +122,6 @@ router.post("/register", async (req, res) => {
             username: req.body.username,
             email: req.body.email,
             password: req.body.password
-            
         });
 
         const data = await Post.find();
@@ -117,7 +129,7 @@ router.post("/register", async (req, res) => {
         const registeredUser = await register.save();
         global.IsSignedIn = true;
         global.currentUser_Id = register.username;
-        res.status(201).render("index",{data});
+        res.status(201).render("index", { data });
     } catch (error) {
         if (error.name === "ValidationError") {
             const errors = Object.values(error.errors).map(err => err.message);
@@ -132,7 +144,6 @@ router.post("/register", async (req, res) => {
 
 // Route for handling user login
 router.post("/login", async (req, res) => {
-
     try {
         const { username, password, email } = req.body;
         const user = await Register.findOne({ username });
@@ -146,16 +157,39 @@ router.post("/login", async (req, res) => {
         if (user.password !== password) {
             return res.status(400).send("Invalid password. Please try again.");
         }
-        if(user.email !== email){
+        if (user.email !== email) {
             return res.status(400).send("User not found. Register if you are new!");
         }
         global.IsSignedIn = true;
         global.currentUser_Id = username;
-        res.status(200).render("index",{data});
-        
+        res.status(200).render("index", { data });
+
     } catch (error) {
         console.error(error);
         res.status(500).send("Internal Server Error");
+    }
+});
+
+// AddBlog post route
+router.post("/AddBlog", upload.single('image'), async (req, res) => {
+    try {
+        const newBlogPost = new BlogPost({
+            title: req.body.title,
+            content: req.body.content,
+            image: req.file.path // Save the path of the uploaded file
+        });
+
+        const savedBlogPost = await newBlogPost.save();
+        res.status(201).redirect('/'); // Redirect to the homepage or wherever you want
+    } catch (error) {
+        if (error.name === "ValidationError") {
+            const errors = Object.values(error.errors).map(err => err.message);
+            console.error(errors);
+            res.status(400).send(errors); // Send validation errors as response
+        } else {
+            console.error(error);
+            res.status(500).send("Internal Server Error");
+        }
     }
 });
 
