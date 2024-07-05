@@ -23,7 +23,7 @@
         <% data.forEach(post => { %>
             <li class="article-preview">
                 <a href="/post/<%= post._id %>">
-                    <img src="uploads/<%= post.filename %>.jpg" alt="Thumbnail 1">
+                    <img src="../<%= post.image%>" alt="Thumbnail 1">
                     <div class="article-preview__content">
                         <h3><%= post.title %></h3>
                         <p><%= post.body %></p>

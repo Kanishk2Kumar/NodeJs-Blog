@@ -1,19 +1,13 @@
 require('dotenv').config();
 const express = require('express');
-const expressLayout = require('express-ejs-layouts');
+const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
-const mongoose = require('mongoose');
-const blogRouter = require('./server/models/Post'); 
-const mainRouter = require('./server/routes/main'); 
+const connectDB = require('./server/config/db');
+const blogRouter = require('./server/routes/blogs'); // Adjust path to your blog routes
+const mainRouter = require('./server/routes/main'); // Adjust path to your main routes
 
 const app = express();
-
-const connectDB = require('./server/config/db');
 const PORT = process.env.PORT || 5000;
-
-// Paths for static files and templates
-const static_path = path.join(__dirname, './public');
-const templates_path = path.join(__dirname, './views');
 
 // Connect to MongoDB
 connectDB();
@@ -23,19 +17,23 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Serving static files
+const static_path = path.join(__dirname, 'public');
 app.use(express.static(static_path));
-app.use(express.static('public'));
 
-// Templating Engine
-app.use(expressLayout);
-app.set('layout', './layouts/main');
+// Templating Engine (EJS)
+app.use(expressLayouts);
 app.set('view engine', 'ejs');
+const templates_path = path.join(__dirname, 'views');
 app.set('views', templates_path);
+app.set('layout', './layouts/main'); // Adjust if your layout file is located differently
 
-// Use your routes
+// Routes
 app.use('/', mainRouter);
-app.use('/blog', blogRouter); // Assuming blogRouter handles routes related to blogs
+app.use('/blogs', blogRouter); 
+app.use('/uploads', express.static('uploads'));
 
+
+// Start server
 app.listen(PORT, () => {
-    console.log(`Listening on port ${PORT}`);
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
