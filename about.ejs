@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link rel="stylesheet" href="public/css/about.css">
+</head>
+<body>
+    <div class="about_container">
+        <header class="About_header">
+            <h1>CREATORS</h1>
+        </header>
+        <section class="about_bio">
+            <div class="cards_container">
+                <div class="card">
+                    <img src="/img/photo1.jpg" alt="Photo 1">
+                    <div class="card_name">Satyajit Borade</div>
+                    <div class="social_about">
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/satyajit-borade-a7294b278/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="/img/photo2.jpg" alt="Photo 2">
+                    <div class="card_name">Kanishk Kumar</div>
+                    <div class="social_about">
+                        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                        </div>
+                </div>
+                <div class="card">
+                    <img src="/img/photo3.jpg" alt="Photo 3">
+                    <div class="card_name">Abhinav Mehta</div>
+                    <div class="social_about">
+                        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                        </div>
+                </div>
+            </div>
+            <p>Welcome to our blog! We are a trio of passionate creators from Pune University, united by our love for computer science, new technologies, and the joy of sharing knowledge. Our journey began in the classrooms and libraries of our university, where we spent countless hours discussing ideas, exploring innovations, and envisioning a platform where we could share our thoughts with the world.
+                
+            </p>
+        </section>
+        <section class="about_suggestions">
+            <h2>Suggestions</h2>
+            <form id="contact-form" >
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+
+                <label for="suggestion">Your Suggestion:</label>
+                <textarea id="suggestion" name="suggestion" rows="4" required></textarea>
+                
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("THkCmNTXu2RIVAw2i");
+        })();
+
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // These IDs from the previous steps
+            emailjs.sendForm('service_3izqhsq', 'template_6ijzxuo', this)
+                .then(function() {
+                    alert('SUCCESS!');
+                }, function(error) {
+                    alert('FAILED...', error);
+                });
+        });
+    </script>
+
+</body>
+</html>

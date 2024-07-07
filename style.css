@@ -96,38 +96,14 @@ body {
   text-align: center;
 }
 
-.about_bio .about_author-photo {
-  width: 300px;
-  height: 400px; /* Adjust height as needed */
-  object-fit: cover;
-  margin-bottom: 15px;
-  border-radius: 10px; /* Adjust border-radius for rounded corners */
-  animation: scaleUp 1s ease-in-out;
-}
-
-
-@keyframes scaleUp {
-  0% {
-    transform: scale(0.5);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-.about_bio h2 {
-  font-size: 2em;
-  color: #555;
-}
 
 .about_bio p {
-  font-size: 1.2em;
+  font-size: 1.5em;
   color: #666;
   line-height: 1.6;
   max-width: 700px;
-  margin: 0 auto;
+  margin: auto;
+  margin-top: 25px;
 }
 
 .about_suggestions {
@@ -178,6 +154,43 @@ body {
 .about_suggestions form button:hover {
   background-color: #895737;
 }
+
+.cards_container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 0 10px;
+  overflow: hidden;
+  transition: transform 0.3s;
+  width: 300px;
+  height: fit-content;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+}
+
+.card_name {
+  padding: 5px;
+  text-align: center;
+  color:#555;
+  font-size: large ;
+  font-weight: bold;
+  
+}
+
+
 /* Home Page */
 
 .Home_heading {
@@ -781,6 +794,7 @@ h2 {
   padding: 10px 20px;
   background-color: #895737;
   text-align: center;
+  border-radius: 25px;
 }
 .Individualblogtext {
   padding: 20px;
@@ -799,9 +813,10 @@ h2 {
 }
 
 .IndividualblogImage img {
-  max-width: 50%;
-  height: 500px;
+  max-width: 60%;
+  height: auto;
   border-radius: 8px;
+  
 }
 
 .aboutindividualauthor {
@@ -815,4 +830,20 @@ h2 {
   margin: 0;
   font-size: 1.1em;
   color: #555;
+}
+.social_about{
+  color: #5E3023;
+  padding: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+}
+.social_about a {
+  display: inline-block;
+  margin: 0 5px;
+  transition: transform 0.3s ease;
+}
+
+.social_about a:hover {
+  transform: scale(1.2);
 }
