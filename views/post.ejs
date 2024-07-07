@@ -4,13 +4,13 @@
             <h1><%= data.title %></h1>
         </header>
         <section class="Individualblogtext">
-            <p><%= data.body %></p>
+            <p><%= data.content %></p>
         </section>
         <section class="IndividualblogImage">
-            <img src="/public/img/Kanishk.jpg" alt="Author's photo" class="Individualblog_image">
+            <img src="../<%= data.image%>" alt="Author's photo" class="Individualblog_image">
         </section>
         <section class="aboutindividualauthor">
-            <p>Hiii, I am Satyajit.</p>
+            <p><%= data.content%></p>
         </section>
     </div>
 </body>

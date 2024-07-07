@@ -12,7 +12,11 @@
 <body>
     <div class="container">
         <header>
-            <%- include('../partials/header.ejs') %>
+            <% if(IsSignedIn){ %>
+                <%- include('../partials/header2.ejs') %>
+            <% } else { %>
+                <%- include('../partials/header.ejs') %>
+            <% } %>        
         </header>
         <main class="main">
             <%- body %>

@@ -1,0 +1,14 @@
+<div class="AddBlog_body">
+    <h1 class="ablogs">Edit Profile</h1>
+    <form action="/editProfile" method="post" enctype="multipart/form-data" class="AddBlog_form">
+        <label for="title" class="AddBlog_label">Name:</label>
+        <input type="text" id="title" name="title" placeholder="New Name" class="AddBlog_input" required>
+        <label for="password" class="AddBlog_label">Password</label>
+        <input type="password" id="password" name="password" placeholder="New Password" class="AddBlog_input" required>
+        <label for="content" class="AddBlog_label">About Me:</label>
+        <textarea id="content" name="content" rows="10" placeholder="About Yourself" required class="AddBlog_textarea"></textarea>
+        <section class="AddBlog_createbutton">
+            <button type="submit">Update Profile</button>
+        </section>
+    </form>
+</div>

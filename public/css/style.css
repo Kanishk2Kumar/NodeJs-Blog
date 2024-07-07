@@ -704,6 +704,7 @@ h2 {
   font-weight: bold;
   margin-top: 10px;
   color: #895737; /* Dark orange */
+  font-size: 24px;
 }
 
 .AddBlog_input,
@@ -713,7 +714,7 @@ h2 {
   margin-top: 6px;
   border: 1px solid #c08552; /* Light orange */
   border-radius: 4px;
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 

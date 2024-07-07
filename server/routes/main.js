@@ -192,5 +192,47 @@ router.post("/AddBlog", upload.single('image'), async (req, res) => {
         }
     }
 });
+// Route to handle profile update
+router.get("/editProfile", (req, res) => {
+    res.render("editProfile");
+})
+router.post("/editProfile", async (req, res) => {
+    if (!global.IsSignedIn) {
+        console.log("User Not Logged in")
+        return res.status(401).redirect('/login'); // Redirect to login if not signed in
+    }
+
+    try {
+        const { username, email, password } = req.body;
+
+        // Find the user and update their profile
+        const updatedUser = await Register.findOneAndUpdate(
+            { username: global.currentUser_Id },
+            { username, email },
+            { new: true, runValidators: true } // Return the updated document and validate before saving
+        );
+
+        if (!updatedUser) {
+            return res.status(404).send("User not found");
+        }
+
+        // Update global variables
+        global.currentUser_Id = updatedUser.username;
+
+        // Fetch updated posts to display
+        const data = await Post.find();
+
+        res.status(200).render("index", { data });
+    } catch (error) {
+        if (error.name === "ValidationError") {
+            const errors = Object.values(error.errors).map(err => err.message);
+            console.error(errors);
+            res.status(400).send(errors); // Send validation errors as response
+        } else {
+            console.error(error);
+            res.status(500).send("Internal Server Error");
+        }
+    }
+});
 
 module.exports = router;
