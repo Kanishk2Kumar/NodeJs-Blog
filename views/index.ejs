@@ -11,7 +11,11 @@
                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae enim eos provident aliquid, architecto beatae non ratione unde nihil cupiditate? Suscipit repudiandae voluptas, dolorum voluptatem fugiat ex veritatis magnam aspernatur!
              </p>
             <button class="add-post">
-                <a href="/AddBlog">Add Blog</a>
+                <% if(IsSignedIn){ %>
+                    <a href="/AddBlog">Add Blog</a>
+                <% } else { %>
+                    <a href="/login">Add Blog</a>
+                <% } %>
             </button>
          </div>
      </div>
@@ -23,7 +27,7 @@
         <% data.forEach(post => { %>
             <li class="article-preview">
                 <a href="/post/<%= post._id %>">
-                    <img src="../<%= post.image%>" alt="Thumbnail 1">
+                    <img src="../<%= post.image%>" alt="Blog Post Image">
                     <div class="article-preview__content">
                         <h3><%= post.title %></h3>
                         <p><%= post.content %></p>

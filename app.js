@@ -3,8 +3,9 @@ const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 const connectDB = require('./server/config/db');
-const blogRouter = require('./server/routes/blogs'); // Adjust path to your blog routes
-const mainRouter = require('./server/routes/main'); // Adjust path to your main routes
+const blogRouter = require('./server/routes/blogs');
+const mainRouter = require('./server/routes/main');
+const editRouter = require('./server/routes/edit');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -30,6 +31,7 @@ app.set('layout', './layouts/main'); // Adjust if your layout file is located di
 // Routes
 app.use('/', mainRouter);
 app.use('/blogs', blogRouter); 
+app.use('/editProfile', editRouter);
 app.use('/uploads', express.static('uploads'));
 
 

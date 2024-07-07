@@ -6,7 +6,6 @@ router.get('/blogs', async (req, res) => {
     try {
         const posts = await Post.find(); // Fetch all posts from MongoDB
 
-        // Render `blogs.ejs` with `posts` data
         res.render('blogs', { posts: posts });
     } catch (error) {
         console.log(error);

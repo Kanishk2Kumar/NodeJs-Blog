@@ -173,14 +173,62 @@ router.post("/login", async (req, res) => {
 // AddBlog post route
 router.post("/AddBlog", upload.single('image'), async (req, res) => {
     try {
+        // Parse categories from the request
+        const categories = req.body.categories.split(',').map(category => category.trim());
+
         const newBlogPost = new BlogPost({
             title: req.body.title,
             content: req.body.content,
-            image: req.file.path // Save the path of the uploaded file
+            image: req.file.path, // Save the path of the uploaded file
+            categories: categories  // Assign parsed categories to the blog post
         });
 
         const savedBlogPost = await newBlogPost.save();
+        console.log("Saved Blog Post:", savedBlogPost); // Check if categories are saved
         res.status(201).redirect('/'); // Redirect to the homepage or wherever you want
+    } catch (error) {
+        if (error.name === "ValidationError") {
+            const errors = Object.values(error.errors).map(err => err.message);
+            console.error(errors);
+            res.status(400).send(errors); // Send validation errors as response
+        } else {
+            console.error(error);
+            res.status(500).send("Internal Server Error");
+        }
+    }
+});
+
+// Route to handle profile update
+router.get("/editProfile", (req, res) => {
+    res.render("editProfile");
+})
+router.post("/editProfile", async (req, res) => {
+    if (!global.IsSignedIn) {
+        console.log("User Not Logged in")
+        return res.status(401).redirect('/login'); // Redirect to login if not signed in
+    }
+
+    try {
+        const { username, email, password } = req.body;
+
+        // Find the user and update their profile
+        const updatedUser = await Register.findOneAndUpdate(
+            { username: global.currentUser_Id },
+            { username, email },
+            { new: true, runValidators: true } // Return the updated document and validate before saving
+        );
+
+        if (!updatedUser) {
+            return res.status(404).send("User not found");
+        }
+
+        // Update global variables
+        global.currentUser_Id = updatedUser.username;
+
+        // Fetch updated posts to display
+        const data = await Post.find();
+
+        res.status(200).render("index", { data });
     } catch (error) {
         if (error.name === "ValidationError") {
             const errors = Object.values(error.errors).map(err => err.message);
