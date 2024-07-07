@@ -9,21 +9,23 @@
 </head>
 
 <body>  
+    <div class="search">
+        <input type="text" id="searchInput" placeholder="Search posts...">
+        <button>Search</button>
+    </div>
     <div class="blog_container">
         <% data.forEach(function(post) { %>
             <a href="/post/<%= post._id %>">
-                <div class="blog_card">
-                    <img src="../<%= post.image%>" alt="Blog Image">
-                    <h2>
-                        <%= post.title %>
-                    </h2>
-                    <p>
-                        <%= post.content %>
-                    </p>
+                <div class="blog_card" data-categories="<%= post.categories.join(',') %>">
+                    <img src="<%= post.image %>" alt="Blog Image">
+                    <h2><%= post.title %></h2>
+                    <div class="category_button"><%= post.categories.join(', ') %></div>
+                    <p><%= post.content %></p>
                 </div>
             </a>
-            <% }); %>
+        <% }); %>
     </div>
+    <script src="script.js"></script>
 </body>
 
 </html>

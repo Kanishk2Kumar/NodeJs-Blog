@@ -64,3 +64,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+// Search
+const searchInput = document.getElementById('searchInput');
+        const blogCards = document.querySelectorAll('.blog_card');
+
+        searchInput.addEventListener('input', function (e) {
+            const searchTerm = e.target.value.toLowerCase();
+
+            blogCards.forEach(card => {
+                const title = card.querySelector('h2').innerText.toLowerCase();
+                const content = card.querySelector('p').innerText.toLowerCase();
+                const categories = card.getAttribute('data-categories').toLowerCase();
+
+                if (title.includes(searchTerm) || content.includes(searchTerm) || categories.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
