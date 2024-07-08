@@ -1,16 +1,32 @@
 <div class="AddBlog_body">
     <h1 class="ablogs">Create New Blog Post</h1>
-    <form action="/AddBlog" method="post" enctype="multipart/form-data" class="AddBlog_form">
+    <form id="blogForm" action="/AddBlog" method="post" enctype="multipart/form-data" class="AddBlog_form">
         <label for="title" class="AddBlog_label">Title:</label>
         <input type="text" id="title" name="title" placeholder="Title of your Blog" class="AddBlog_input" required>
+        <div class="dropdown">
+            <button type="button" class="dropbtn">Categories</button>
+            <div class="dropdown-content" id="dropdown-content">
+                <a href="#" data-value="Technology">Technology</a>
+                <a href="#" data-value="Health">Health</a>
+                <a href="#" data-value="Lifestyle">Lifestyle</a>
+                <a href="#" data-value="Travel">Travel</a>
+                <a href="#" data-value="Food">Food</a>
+                <a href="#" data-value="Education">Education</a>
+                <a href="#" data-value="Finance">Finance</a>
+                <a href="#" data-value="Entertainment">Entertainment</a>
+            </div>
+            <div class="selected-categories" id="selected-categories"></div>
+            <input type="hidden" itemid="categories" name="categories" id="categories-input" required>
+        </div>
         <section class="Imagetaker">
             <label for="image">Featured Image:</label>
             <input type="file" id="image" name="image" accept="image/*" required class="AddBlog_input">
         </section>
         <label for="content" class="AddBlog_label">Content:</label>
-        <textarea id="content" name="content" rows="10" placeholder="Add you the content of you Blog" required class="AddBlog_textarea"></textarea>
+        <textarea id="content" name="content" rows="10" placeholder="Add the content of your Blog" required class="AddBlog_textarea"></textarea>
         <section class="AddBlog_createbutton">
             <button type="submit">Create Post</button>
         </section>
     </form>
 </div>
+<script src="script.js"></script>

@@ -61,6 +61,27 @@ router.get("/", async (req, res) => {
         console.log(error);
     }
 });
+/**
+ * GET /search
+ * Search for blog posts based on query parameters
+ */
+router.get("/search", async (req, res) => {
+    try {
+        const searchQuery = req.query.q.toLowerCase().trim();
+        const posts = await Post.find({
+            $or: [
+                { title: { $regex: searchQuery, $options: 'i' } },
+                { content: { $regex: searchQuery, $options: 'i' } },
+                { categories: { $regex: searchQuery, $options: 'i' } }
+            ]
+        }).exec();
+
+        res.render('blogs', { data: posts });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("An error occurred while searching for posts.");
+    }
+});
 
 // Other routes
 router.post("/", upload.single("image"), postImage);
@@ -173,13 +194,18 @@ router.post("/login", async (req, res) => {
 // AddBlog post route
 router.post("/AddBlog", upload.single('image'), async (req, res) => {
     try {
+        // Parse categories from the request
+        const categories = req.body.categories.split(',').map(category => category.trim());
+
         const newBlogPost = new BlogPost({
             title: req.body.title,
             content: req.body.content,
-            image: req.file.path // Save the path of the uploaded file
+            image: req.file.path, // Save the path of the uploaded file
+            categories: categories  // Assign parsed categories to the blog post
         });
 
         const savedBlogPost = await newBlogPost.save();
+        console.log("Saved Blog Post:", savedBlogPost); // Check if categories are saved
         res.status(201).redirect('/'); // Redirect to the homepage or wherever you want
     } catch (error) {
         if (error.name === "ValidationError") {
@@ -192,6 +218,7 @@ router.post("/AddBlog", upload.single('image'), async (req, res) => {
         }
     }
 });
+
 // Route to handle profile update
 router.get("/editProfile", (req, res) => {
     res.render("editProfile");

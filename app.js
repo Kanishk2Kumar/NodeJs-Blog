@@ -3,9 +3,10 @@ const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 const connectDB = require('./server/config/db');
-const blogRouter = require('./server/routes/blogs');
 const mainRouter = require('./server/routes/main');
+const blogRouter = require('./server/routes/blogs');
 const editRouter = require('./server/routes/edit');
+const Blog = require('./server/models/Post'); // Adjust as per your model
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -34,6 +35,18 @@ app.use('/blogs', blogRouter);
 app.use('/editProfile', editRouter);
 app.use('/uploads', express.static('uploads'));
 
+// Search route
+app.get('/search', async (req, res) => {
+    try {
+        let query = req.query.q;
+        const blogs = await Blog.find({ title: { $regex: query, $options: 'i' } });
+
+        res.render('blogs', { data: blogs });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Internal Server Error");
+    }
+});
 
 // Start server
 app.listen(PORT, () => {

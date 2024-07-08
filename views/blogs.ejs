@@ -1,29 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Cards</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
+    <br>
+    <!-- Search Bar -->
+    <form action="/search" method="GET" class="search-form">
+        <input type="text" name="q" placeholder="Search blog posts..." class="search-input">
+        <button type="submit" class="search-button">Search</button>
+    </form>
+    
+    <!-- Blog Container -->
     <div class="blog_container">
         <% data.forEach(function(post) { %>
             <a href="/post/<%= post._id %>">
-                <div class="blog_card">
-                    <img src="../<%= post.image%>" alt="Blog Image">
-                    <h2>
-                        <%= post.title %>
-                    </h2>
-                    <p>
-                        <%= post.content %>
-                    </p>
+                <div class="blog_card" data-categories="<%= post.categories.join(',') %>">
+                    <img src="<%= post.image %>" alt="Blog Image">
+                    <h2><%= post.title %></h2>
+                    <div class="category_button"><%= post.categories.join(', ') %></div>
+                    <p><%= post.content %></p>
                 </div>
             </a>
-            <% }); %>
+        <% }); %>
     </div>
-</body>
+    
 
+    <script src="script.js"></script>
+</body>
 </html>
