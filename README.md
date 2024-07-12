@@ -10,7 +10,6 @@ This project is a blogging website created using HTML, CSS, JavaScript, EJS, and
 - [Installation](#installation)
 - [Usage](#usage)
 - [Project Structure](#project-structure)
-- [Contact](#contact)
 
 ## Features
 - User authentication (Sign up, Login, Logout)
@@ -68,15 +67,16 @@ This project is a blogging website created using HTML, CSS, JavaScript, EJS, and
 ## Project Structure
 blogging-website/
 ├── public/
-│ ├── css/
-│ ├── js/
-│ └── images/
+│   ├── css/
+│   ├── js/
+│   └── images/
 ├── views/
-│ ├── partials/
-│ ├── auth/
-│ ├── posts/
-│ └── index.ejs
+│   ├── partials/
+│   ├── auth/
+│   ├── posts/
+│   └── index.ejs
 ├── .env
 ├── app.js
 ├── package.json
 └── README.md
+
