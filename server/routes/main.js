@@ -61,6 +61,27 @@ router.get("/", async (req, res) => {
         console.log(error);
     }
 });
+/**
+ * GET /search
+ * Search for blog posts based on query parameters
+ */
+router.get("/search", async (req, res) => {
+    try {
+        const searchQuery = req.query.q.toLowerCase().trim();
+        const posts = await Post.find({
+            $or: [
+                { title: { $regex: searchQuery, $options: 'i' } },
+                { content: { $regex: searchQuery, $options: 'i' } },
+                { categories: { $regex: searchQuery, $options: 'i' } }
+            ]
+        }).exec();
+
+        res.render('blogs', { data: posts });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("An error occurred while searching for posts.");
+    }
+});
 
 // Other routes
 router.post("/", upload.single("image"), postImage);
