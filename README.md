@@ -65,31 +65,18 @@ This project is a blogging website created using HTML, CSS, JavaScript, EJS, and
 3. Open your browser and navigate to http://localhost:5000.
 
 ## Project Structure
-blogging-website/
-
-├── public/
-
-│   ├── css/
-
-│   ├── js/
-
-│   └── images/
-
-├── views/
-
-│   ├── partials/
-
-│   ├── auth/
-
-│   ├── posts/
-
-│   └── index.ejs
-
-├── .env
-
-├── app.js
-
-├── package.json
-
-└── README.md
+blogging-website/<br>
+├── public/<br>
+│   ├── css/<br>
+│   ├── js/<br>
+│   └── images/<br>
+├── views/<br>
+│   ├── partials/<br>
+│   ├── auth/<br>
+│   ├── posts/<br>
+│   └── index.ejs<br>
+├── .env<br>
+├── app.js<br>
+├── package.json<br>
+└── README.md<br>
 
