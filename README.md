@@ -66,17 +66,30 @@ This project is a blogging website created using HTML, CSS, JavaScript, EJS, and
 
 ## Project Structure
 blogging-website/
+
 ├── public/
+
 │   ├── css/
+
 │   ├── js/
+
 │   └── images/
+
 ├── views/
+
 │   ├── partials/
+
 │   ├── auth/
+
 │   ├── posts/
+
 │   └── index.ejs
+
 ├── .env
+
 ├── app.js
+
 ├── package.json
+
 └── README.md
 
